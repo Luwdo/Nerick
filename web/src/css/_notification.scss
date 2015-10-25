@@ -1,0 +1,38 @@
+.notifications{
+    text-align: center;
+}
+
+.notification{
+    margin-top: .5em;
+    cursor: pointer;
+    font-size: .9em;
+    text-align: center; 
+    width: 96%;
+    border: 3px solid #691203; 
+    padding: 7px;
+    &.error{
+	background-color: rgba(71, 18, 18, 0.35);
+    }
+    &.warning{
+	background-color: rgba(134, 85, 22, 0.35);
+    }
+    &.message{
+	background-color: rgba(26, 109, 29, 0.35);
+    }
+}
+.global-notifications{
+    .notification{
+	display: inline-block;
+	margin-bottom: 9px;
+    }
+    position: fixed;
+    z-index: 500;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.85);
+    border-radius: 0px 0px 10px 10px;
+    -moz-border-radius: 0px 0px 10px 10px;
+    -webkit-border-radius: 0px 0px 10px 10px;
+}
+

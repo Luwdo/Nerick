@@ -1,0 +1,35 @@
+services:
+    fos_rest.serializer:
+        class: Nerick\PortfolioBundle\NerickSerializer
+    fos_rest.view_handler:
+        class: Nerick\PortfolioBundle\NerickViewHandler
+        arguments: ["%fos_rest.formats%", "%fos_rest.failed_validation%", "%fos_rest.empty_content%", "%fos_rest.serialize_null%", "%fos_rest.force_redirects%", "%fos_rest.default_engine%"]
+        calls:
+            - [setExclusionStrategyGroups, ["%fos_rest.serializer.exclusion_strategy.groups%"]]
+            - [setExclusionStrategyVersion, ["%fos_rest.serializer.exclusion_strategy.version%"]]
+            - [setSerializeNullStrategy, ["%fos_rest.serializer.serialize_null%"]]
+            - [setContainer, ["@service_container"]]
+    Nerick.PortfolioBundle.API.Validator:
+        class: Nerick\PortfolioBundle\API\Validator
+        arguments: [@validator]
+    Nerick.PortfolioBundle.Encoder:   
+        class: Nerick\PortfolioBundle\Security\NerickPasswordEncoder
+    Nerick.PortfolioBundle.AuthenticationRestHandler:   
+        class: Nerick\PortfolioBundle\Security\AuthenticationRestHandler
+    Nerick.PortfolioBundle.SecurityController:   
+        class: Nerick\PortfolioBundle\Controller\SecurityController
+        calls:
+            - [setContainer, ["@service_container"]]    
+    Nerick.PortfolioBundle.UploadService:   
+        class: Nerick\PortfolioBundle\Services\UploadService
+        arguments: ["@=service('doctrine.orm.default_entity_manager').getRepository('NerickPortfolioBundle:Upload')", "@=service('doctrine.orm.default_entity_manager').getRepository('NerickPortfolioBundle:ArtworkUpload')", "@service_container"] 
+    Nerick.PortfolioBundle.ArtworkService:   
+        class: Nerick\PortfolioBundle\Services\ArtworkService
+        arguments: ["@doctrine.orm.entity_manager", "@=service('doctrine.orm.default_entity_manager').getRepository('NerickPortfolioBundle:Artwork')", "@=service('doctrine.orm.default_entity_manager').getRepository('NerickPortfolioBundle:Upload')", "@=service('doctrine.orm.default_entity_manager').getRepository('NerickPortfolioBundle:ArtworkUpload')", "@service_container"]
+    Nerick.PortfolioBundle.TableService:   
+        class: Nerick\PortfolioBundle\Services\TableService
+        calls:
+            - [setContainer, ["@service_container"]]
+    Nerick.PortfolioBundle.GalleryService:   
+        class: Nerick\PortfolioBundle\Services\GalleryService
+        arguments: ["@doctrine.orm.entity_manager", "@=service('doctrine.orm.default_entity_manager').getRepository('NerickPortfolioBundle:Gallery')", "@=service('doctrine.orm.default_entity_manager').getRepository('NerickPortfolioBundle:Artwork')", "@=service('doctrine.orm.default_entity_manager').getRepository('NerickPortfolioBundle:GalleryArtwork')", "@service_container"]

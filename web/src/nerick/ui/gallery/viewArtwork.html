@@ -1,0 +1,39 @@
+<div>
+    <div class="section-dark section-divider-bot content-full">
+	<h1 class="title">{{title}}</h1>
+    </div>
+    <div class="content" style="padding-top: 60px; padding-bottom: 60px;">
+       <div class="grid-12">
+	    <div class="grid-12 no-gutter">
+		<a href="#/gallery/{{galleryId}}/artwork/{{previousArtworkId}}" title="Previous Artwork">
+		    <div class="grid-6 no-gutter artwork-nav left-top">
+			<div class="prev-art"></div>
+		    </div>
+		</a>
+		<a href="#/gallery/{{galleryId}}/artwork/{{nextArtworkId}}" title="Next Artwork">
+		    <div class="grid-6 no-gutter artwork-nav right-top">
+			<div class="next-art"></div>
+		    </div>
+		</a>
+		<div class="clear-both"></div>
+	    </div>
+	    <div media-viewer data-mediaId="{{artwork.uploadId}}" data-style="width: 100%" style="margin-bottom: -5px; min-height: 400px; background-color: rgba(10, 10, 10, 0.95);"></div>
+	    <div class="grid-12 no-gutter">
+		<a href="#/gallery/{{galleryId}}/artwork/{{previousArtworkId}}" title="Previous Artwork">
+		    <div class="grid-6 no-gutter artwork-nav left-bot">
+			<div class="prev-art"></div>
+		    </div>
+		</a>
+		<a href="#/gallery/{{galleryId}}/artwork/{{nextArtworkId}}" title="Next Artwork">
+		    <div class="grid-6 no-gutter artwork-nav right-bot">
+			<div class="next-art"></div>
+		    </div>
+		</a>
+		<div class="clear-both"></div>
+	    </div>
+	</div>
+	<div class="grid-12">
+	    artwork details
+	</div>
+    </div>
+</div>

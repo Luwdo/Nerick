@@ -1,0 +1,11 @@
+nerick_portfolio:
+    resource: "@NerickPortfolioBundle/Controller/"
+    type:     annotation
+    defaults: {_format: json}
+    prefix:   /api
+#not convinced this is needed
+#fos_user:
+#    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+#app:
+#    resource: @AppBundle/Controller/
+#    type:     annotation

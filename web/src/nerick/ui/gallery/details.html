@@ -1,0 +1,59 @@
+<div class="container-fluid section-default">
+    <div class="container">
+	<div class="row">
+	    <div class="col-lg-8 col-lg-offset-2 centered" style="padding-bottom:30px;">
+		<h1 class="section-header">{{title}}</h1>
+		<div class="separator"></div>
+	    </div>
+	</div>
+    </div>
+</div>
+<div class="container-fluid section">
+    <div class="container">
+	<div class="row">
+	       <form>
+		   <div class="form-group">
+			<label>Title</label>
+			<input type="text" class="form-control" placeholder="Title" name="title" ng-model="galleryModel.title">
+		    </div>
+		    <div class="form-group">
+			<label>Description</label>
+			<textarea class="form-control" name="description" ng-model="galleryModel.description"></textarea>
+		    </div>
+		    <div class="checkbox">
+			<label>
+			  <input type="checkbox" name="menuVisible" ng-model="galleryModel.menuVisible"> Menu Visible
+			</label>
+		    </div>
+		    <div class="checkbox">
+			<label>
+			  <input type="checkbox" name="mainSlider" ng-model="galleryModel.mainSlider">Use in Main Slider
+			</label>
+		    </div>
+		    <fieldset>
+			<legend>Artwork in Gallery</legend>
+			<div class="row gallery-preview" ui-sortable ng-model="artwork">
+			    <div class="col-lg-3 col-md-4 col-xs-12 artwork-preview" ng-repeat="showArtwork in artwork">
+				<h3>{{showArtwork.title}}</h3>
+				<div media-viewer data-mediaId="{{showArtwork.uploadId}}" style="display: inline-block;" data-style="max-width: 200px"></div>
+				<div class="artwork-actions">
+				    <a data-href="/gallery/{{galleryModel.id ? galleryModel.id : 0}}/artwork/remove/{{showArtwork.id}}" class="action lg light-box" title="Remove"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+				</div>
+
+			    </div>
+			</div>
+		    </fieldset>
+		    <fieldset>
+			<legend>Available Artwork</legend>
+			<div class="row">
+			    <div>
+				<table datatable="" dt-options="dtOptions" dt-columns="dtColumns" class="data-table table"></table>
+			    </div>
+			</div>
+		    </fieldset>
+		    <input class="btn btn-default" type="submit" value="Save" ng-click="save(galleryModel)">
+		    <a class="btn btn-danger" href="#/gallery" role="button">Cancel</a>
+	       </form>
+	</div>
+    </div>
+</div>

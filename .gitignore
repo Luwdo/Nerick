@@ -1,0 +1,9 @@
+/api/vendor
+/api/app/config/parameters.yml
+/api/app/config/parameters.yml.dist
+/web/bower_components
+/web/node_modules
+/app
+/node_modules
+/nbproject/private
+/api/app/cache
